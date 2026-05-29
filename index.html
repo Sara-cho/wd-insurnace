@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>우리동네 보험지킴이 | 삶에 맞춘 보험, 필요할 때 곁에</title>
+<meta name="description" content="우리동네 보험지킴이 - 기준 있는 설계, 사람 중심의 상담. 손해보험·생명보험 비교 분석으로 당신에게 가장 알맞은 보험을 설계합니다." />
+
+<!-- ===== Fonts ===== -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+<style>
+/* ============================================================
+   우리동네 보험지킴이 — 보험 고객용 홈페이지
+   Aesthetic: refined / trustworthy / warm-minimal
+   Brand: deep purple + lavender tint + warm grey + white
+   ============================================================ */
+
+:root{
+  --purple-900:#2b1a52;
+  --purple-700:#3d2477;
+  --purple-600:#4b2e8c;
+  --purple-500:#5e3da8;
+  --purple-300:#a98fd6;
+  --lav-100:#f5f1fb;
+  --lav-50:#faf8fe;
+  --grey-900:#1f1b2e;
+  --grey-600:#5d5868;
+  --grey-400:#938e9e;
+  --grey-200:#e7e3ee;
+  --white:#ffffff;
+  --ok:#3d2477;
+  --shadow-sm:0 2px 10px rgba(43,26,82,.06);
+  --shadow-md:0 14px 40px rgba(43,26,82,.10);
+  --shadow-lg:0 30px 70px rgba(43,26,82,.16);
+  --radius:18px;
+  --maxw:1120px;
+  --nav-h:74px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{
+  font-family:'Pretendard',-apple-system,sans-serif;
+  color:var(--grey-900);
+  background:var(--white);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+section{padding:clamp(72px,9vw,128px) 0}
+.wrap{width:min(var(--maxw),92%);margin:0 auto}
+
+.eyebrow{
+  font-size:.8rem;font-weight:700;letter-spacing:.22em;
+  color:var(--purple-500);text-transform:uppercase;margin-bottom:14px;
+}
+.h2{
+  font-size:clamp(1.7rem,3.6vw,2.7rem);font-weight:800;
+  line-height:1.25;letter-spacing:-.02em;color:var(--grey-900);
+}
+.h2 b{color:var(--purple-600)}
+.lead{font-size:clamp(1rem,1.6vw,1.12rem);color:var(--grey-600);margin-top:18px;max-width:46ch}
+.pen{font-family:'Nanum Pen Script',cursive;font-weight:400}
+
+/* ===== Buttons ===== */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-weight:700;font-size:.98rem;cursor:pointer;border:none;
+  padding:15px 28px;border-radius:999px;transition:.25s ease;
+}
+.btn-primary{background:var(--purple-600);color:#fff;box-shadow:0 10px 26px rgba(75,46,140,.28)}
+.btn-primary:hover{background:var(--purple-700);transform:translateY(-2px);box-shadow:0 16px 34px rgba(75,46,140,.34)}
+.btn-ghost{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.btn-ghost:hover{background:rgba(255,255,255,.22)}
+.btn-line{background:#fff;color:var(--purple-700);border:1.5px solid var(--grey-200)}
+.btn-line:hover{border-color:var(--purple-300);color:var(--purple-600)}
+
+/* ============ NAV ============ */
+header.nav{
+  position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:100;
+  background:rgba(255,255,255,.86);backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;transition:.3s ease;
+}
+header.nav.scrolled{border-bottom-color:var(--grey-200);box-shadow:var(--shadow-sm)}
+.nav-in{height:100%;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{height:40px;width:auto}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-weight:600;font-size:.97rem;color:var(--grey-900);position:relative;padding:6px 0;transition:.2s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--purple-600);transition:.25s}
+.nav-links a:hover{color:var(--purple-600)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{display:flex;align-items:center;gap:12px}
+.nav-cta .btn{padding:11px 22px}
+.hamb{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.hamb span{width:26px;height:2.5px;background:var(--grey-900);border-radius:2px;transition:.3s}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  padding-top:var(--nav-h);
+  background:
+    radial-gradient(120% 90% at 85% 10%, rgba(94,61,168,.16), transparent 60%),
+    radial-gradient(90% 80% at 5% 95%, rgba(169,143,214,.18), transparent 55%),
+    linear-gradient(180deg,#fff 0%, var(--lav-50) 100%);
+  overflow:hidden;
+}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(8px);opacity:.5;pointer-events:none}
+.hero-orb.a{width:340px;height:340px;right:-60px;top:14%;background:radial-gradient(circle,#c9b6ec,transparent 70%)}
+.hero-orb.b{width:260px;height:260px;left:-40px;bottom:6%;background:radial-gradient(circle,#a98fd6,transparent 70%)}
+.hero-in{position:relative;z-index:2;max-width:780px}
+.hero .tag{
+  display:inline-flex;align-items:center;gap:8px;background:#fff;
+  border:1px solid var(--grey-200);box-shadow:var(--shadow-sm);
+  padding:8px 16px;border-radius:999px;font-size:.86rem;font-weight:600;color:var(--purple-600);margin-bottom:26px;
+}
+.hero .tag .dot{width:7px;height:7px;border-radius:50%;background:var(--purple-500)}
+.hero h1{
+  font-size:clamp(2.3rem,6vw,4.1rem);font-weight:800;line-height:1.12;letter-spacing:-.03em;
+}
+.hero h1 .accent{color:var(--purple-600)}
+.hero .sub{font-size:clamp(1.05rem,2vw,1.32rem);color:var(--grey-600);margin-top:24px;max-width:30ch;line-height:1.6}
+.hero .pen-line{font-family:'Nanum Pen Script',cursive;font-size:clamp(1.5rem,3vw,2.1rem);color:var(--purple-500);margin-top:18px}
+.hero-actions{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
+.hero-stats{display:flex;gap:40px;margin-top:54px;flex-wrap:wrap}
+.hero-stats .st b{display:block;font-size:clamp(1.5rem,3vw,2rem);font-weight:800;color:var(--purple-700)}
+.hero-stats .st span{font-size:.9rem;color:var(--grey-600)}
+
+/* ============ ABOUT ============ */
+.about{background:var(--white)}
+.story-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
+.story-card{
+  background:linear-gradient(160deg,var(--purple-700),var(--purple-900));
+  color:#fff;border-radius:26px;padding:48px 44px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
+}
+.story-card::after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.06);right:-60px;bottom:-70px}
+.story-card .pen{font-size:2.2rem;color:#d9c8f5;display:block;margin-bottom:8px}
+.story-card h3{font-size:1.5rem;font-weight:800;margin-bottom:18px;line-height:1.4}
+.story-card p{color:#e3d9f5;font-size:1.02rem;line-height:1.8}
+.story-card .quote{margin-top:26px;font-family:'Nanum Pen Script',cursive;font-size:1.9rem;color:#fff}
+
+/* promises */
+.promises{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:72px}
+.promise{
+  background:var(--lav-50);border:1px solid var(--grey-200);border-radius:var(--radius);
+  padding:32px 28px;transition:.3s;
+}
+.promise:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:var(--purple-300)}
+.promise .num{font-size:.82rem;font-weight:800;color:var(--purple-300);letter-spacing:.1em}
+.promise h4{font-size:1.18rem;font-weight:800;margin:10px 0 12px;color:var(--purple-700)}
+.promise p{color:var(--grey-600);font-size:.96rem}
+
+/* profile */
+.profile{margin-top:96px;display:grid;grid-template-columns:.9fr 1.3fr;gap:54px;align-items:start}
+.profile-name{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+.profile-name .role{font-size:1.05rem;color:var(--grey-600);font-weight:600}
+.profile-name h3{font-size:2.1rem;font-weight:800;color:var(--purple-700)}
+.profile .eng{color:var(--grey-400);font-weight:600;letter-spacing:.04em;margin-bottom:24px}
+.career{list-style:none;display:flex;flex-direction:column;gap:13px}
+.career li{display:flex;gap:14px;font-size:.97rem;color:var(--grey-900);align-items:flex-start}
+.career li .yr{flex:none;width:108px;font-weight:700;color:var(--purple-600);font-size:.9rem}
+.career li .now{color:var(--purple-700);font-weight:800}
+.profile-badge{
+  background:linear-gradient(160deg,var(--lav-100),#fff);border:1px solid var(--grey-200);
+  border-radius:22px;padding:34px 30px;box-shadow:var(--shadow-sm);
+}
+.profile-badge .big{font-size:2.4rem;font-weight:800;color:var(--purple-700);line-height:1}
+.profile-badge .big span{font-size:1.1rem}
+.profile-badge .label{color:var(--grey-600);margin-top:8px;font-weight:600}
+.profile-badge hr{border:none;border-top:1px solid var(--grey-200);margin:22px 0}
+.lic{font-size:.88rem;color:var(--grey-600);line-height:1.9}
+.lic b{color:var(--grey-900)}
+
+/* ============ INSURERS ============ */
+.insurers{background:var(--lav-50)}
+.ins-block{margin-top:38px}
+.ins-block h4{font-size:1.05rem;font-weight:800;color:var(--purple-700);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.ins-block h4::before{content:"";width:22px;height:3px;border-radius:3px;background:var(--purple-500)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{
+  background:#fff;border:1px solid var(--grey-200);border-radius:999px;
+  padding:10px 18px;font-size:.9rem;font-weight:600;color:var(--grey-900);transition:.2s;
+}
+.chip:hover{border-color:var(--purple-300);color:var(--purple-600);transform:translateY(-2px)}
+
+/* ============ CONSULTING ============ */
+.consult{background:#fff}
+.diff{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:48px}
+.diff .d{
+  background:linear-gradient(150deg,var(--purple-600),var(--purple-800,#3d2477));
+  color:#fff;border-radius:20px;padding:34px 32px;box-shadow:var(--shadow-md);
+}
+.diff .d:nth-child(2){background:linear-gradient(150deg,var(--purple-900),#1c1138)}
+.diff .d h4{font-size:1.35rem;font-weight:800;margin-bottom:10px}
+.diff .d p{color:#e3d9f5;font-size:.98rem}
+.diff .d .small{display:block;margin-top:8px;color:#c9b6ec;font-size:.88rem}
+
+.plans{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:64px}
+.plan{
+  background:var(--lav-50);border:1px solid var(--grey-200);border-radius:18px;
+  padding:28px 20px;text-align:center;transition:.3s;
+}
+.plan:hover{transform:translateY(-8px);box-shadow:var(--shadow-md);background:#fff;border-color:var(--purple-300)}
+.plan .ic{font-size:2rem;margin-bottom:10px}
+.plan .age{font-size:.8rem;color:var(--grey-400);font-weight:700}
+.plan h4{font-size:1.14rem;font-weight:800;color:var(--purple-700);margin:4px 0 12px}
+.plan p{font-size:.86rem;color:var(--grey-600);line-height:1.6}
+.plan-note{text-align:center;margin-top:40px;font-weight:700;color:var(--purple-700);font-size:clamp(1.05rem,2vw,1.3rem)}
+.plan-note b{color:var(--purple-500)}
+
+/* ============ RECRUIT ============ */
+.recruit{
+  background:
+    radial-gradient(100% 80% at 90% 0%, rgba(94,61,168,.16), transparent 55%),
+    linear-gradient(180deg,var(--purple-900),#150c2c);
+  color:#fff;
+}
+.recruit .eyebrow{color:var(--purple-300)}
+.recruit .h2{color:#fff}
+.recruit .h2 b{color:#c9b6ec}
+.recruit .lead{color:#cdc2e6}
+.philo{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:54px}
+.philo .p{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:30px 26px}
+.philo .p .n{font-size:.8rem;font-weight:800;color:var(--purple-300);letter-spacing:.12em}
+.philo .p h4{font-size:1.18rem;font-weight:800;margin:10px 0 12px}
+.philo .p p{color:#cdc2e6;font-size:.94rem}
+.types{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
+.type{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:30px 28px}
+.type .tname{font-size:1.25rem;font-weight:800;margin-bottom:6px}
+.type .tname span{font-size:.9rem;color:var(--purple-300);font-weight:600}
+.type ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:9px}
+.type li{font-size:.92rem;color:#cdc2e6;padding-left:20px;position:relative}
+.type li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%;background:var(--purple-300)}
+.recruit-cta{margin-top:46px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:28px 32px}
+.recruit-cta .t{flex:1;min-width:240px}
+.recruit-cta .t strong{font-size:1.15rem;display:block;margin-bottom:4px}
+.recruit-cta .t span{color:#cdc2e6;font-size:.92rem}
+
+/* ============ CONTACT ============ */
+.contact{background:var(--lav-50)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:54px;align-items:start}
+.contact-info h3{font-size:1.5rem;font-weight:800;color:var(--purple-700);margin-bottom:20px;line-height:1.4}
+.info-row{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--grey-200);align-items:flex-start}
+.info-row .k{flex:none;width:80px;font-weight:700;color:var(--purple-600);font-size:.92rem}
+.info-row .v{color:var(--grey-900);font-size:.96rem;line-height:1.6}
+.info-row .v small{color:var(--grey-600)}
+
+.form-card{background:#fff;border:1px solid var(--grey-200);border-radius:24px;padding:40px 36px;box-shadow:var(--shadow-md)}
+.form-card h3{font-size:1.4rem;font-weight:800;margin-bottom:6px;color:var(--grey-900)}
+.form-card .desc{color:var(--grey-600);font-size:.95rem;margin-bottom:26px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:.9rem;font-weight:700;margin-bottom:8px;color:var(--grey-900)}
+.field label .req{color:var(--purple-500)}
+.field input,.field textarea{
+  width:100%;padding:14px 16px;border:1.5px solid var(--grey-200);border-radius:12px;
+  font-family:inherit;font-size:.98rem;color:var(--grey-900);background:var(--lav-50);transition:.2s;
+}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--purple-500);background:#fff;box-shadow:0 0 0 4px rgba(94,61,168,.1)}
+.field textarea{resize:vertical;min-height:96px}
+.agree{display:flex;align-items:flex-start;gap:10px;margin:8px 0 22px;font-size:.88rem;color:var(--grey-600)}
+.agree input{width:18px;height:18px;flex:none;margin-top:2px;accent-color:var(--purple-600)}
+.agree a{color:var(--purple-600);text-decoration:underline}
+.form-card .btn{width:100%;justify-content:center;font-size:1.05rem;padding:16px}
+.form-msg{margin-top:16px;text-align:center;font-weight:700;font-size:.96rem;display:none}
+.form-msg.ok{display:block;color:var(--purple-700)}
+.form-msg.err{display:block;color:#c0392b}
+
+/* ============ FOOTER ============ */
+footer{background:#160d2c;color:#cdc2e6;padding:64px 0 40px}
+.foot-top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px}
+.foot-brand img{height:46px;margin-bottom:18px;filter:brightness(0) invert(1);opacity:.92}
+.foot-brand p{font-size:.9rem;color:#9c92b8;line-height:1.8;max-width:34ch}
+.foot-col h5{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--purple-300);font-weight:800;margin-bottom:16px}
+.foot-col p,.foot-col a{display:block;font-size:.92rem;color:#cdc2e6;line-height:2;transition:.2s}
+.foot-col a:hover{color:#fff}
+.foot-sns{display:flex;gap:12px;margin-top:8px}
+.foot-sns a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:#cdc2e6}
+.foot-sns a:hover{background:var(--purple-600);color:#fff}
+.foot-bottom{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-size:.82rem;color:#7d7397;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* ============ Floating KakaoTalk ============ */
+.float-kakao{
+  position:fixed;right:24px;bottom:24px;z-index:90;
+  display:flex;align-items:center;gap:9px;background:#FAE100;color:#3a2a00;
+  font-weight:800;font-size:.95rem;padding:14px 22px;border-radius:999px;
+  box-shadow:0 12px 30px rgba(0,0,0,.18);transition:.25s;
+}
+.float-kakao:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(0,0,0,.24)}
+
+/* ============ Reveal animation ============ */
+.reveal{opacity:0;transform:translateY(28px);transition:.7s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ Responsive ============ */
+@media(max-width:980px){
+  .story-grid,.profile,.contact-grid{grid-template-columns:1fr;gap:38px}
+  .promises,.philo{grid-template-columns:1fr}
+  .plans{grid-template-columns:repeat(2,1fr)}
+  .diff,.types{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr;gap:32px}
+}
+@media(max-width:760px){
+  .nav-links,.nav-cta .btn{display:none}
+  .hamb{display:flex}
+  .nav-links.open{
+    display:flex;flex-direction:column;position:absolute;top:var(--nav-h);left:0;right:0;
+    background:#fff;padding:22px 6%;gap:8px;box-shadow:var(--shadow-md);border-top:1px solid var(--grey-200);
+  }
+  .nav-links.open a{padding:12px 0;border-bottom:1px solid var(--grey-200)}
+  .hero-stats{gap:24px}
+  .plans{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .plans{grid-template-columns:1fr}
+  .form-card,.story-card{padding:30px 22px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="#home" class="brand"><img src="assets/logo.png" alt="우리동네 보험지킴이" /></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">소개</a>
+      <a href="#consult">보험 컨설팅</a>
+      <a href="#recruit">설계사 모집</a>
+      <a href="#contact">상담신청</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary">무료 상담신청</a>
+    </div>
+    <button class="hamb" id="hamb" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="home">
+  <div class="hero-orb a"></div>
+  <div class="hero-orb b"></div>
+  <div class="wrap hero-in">
+    <span class="tag reveal"><span class="dot"></span> 기준 있는 설계 · 사람 중심의 상담</span>
+    <h1 class="reveal">삶에 맞춘 보험,<br><span class="accent">필요할 때 곁에.</span></h1>
+    <p class="sub reveal">모두가 같은 보험을 가입할 수는 없습니다.<br>당신의 상황과 목적에 꼭 맞는 보험을 설계해 드립니다.</p>
+    <p class="pen-line reveal">"나와 내 가족을 위한 보험"</p>
+    <div class="hero-actions reveal">
+      <a href="#contact" class="btn btn-primary">무료 상담신청 →</a>
+      <a href="#about" class="btn btn-line">우리동네 알아보기</a>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="st"><b>20년+</b><span>금융·보험 컨설팅 경력</span></div>
+      <div class="st"><b>35곳</b><span>손해·생명 비교 설계</span></div>
+      <div class="st"><b>1:1</b><span>맞춤 상황별 설계</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="about" id="about">
+  <div class="wrap">
+    <p class="eyebrow reveal">About us</p>
+    <h2 class="h2 reveal">안전한 보험, <b>행복한 내일</b></h2>
+
+    <div class="story-grid" style="margin-top:48px">
+      <div class="story-card reveal">
+        <span class="pen">Woori Dongnae</span>
+        <h3>보험 상담, 어떻게 받고 계신가요?</h3>
+        <p>우리동네 보험지킴이는 상담받으시는 모든 고객분들의 안전하고 행복한 내일을 위해, 다양한 보험을 비교·분석하여 가장 알맞은 보험을 전달해 드립니다.<br><br>모두가 같은 보험을 가입할 수 없습니다. 상황과 형편에 따라 다른 보험이 필요합니다.</p>
+        <span class="quote">우리동네 보험지킴이가 함께합니다.</span>
+      </div>
+      <div class="reveal">
+        <p class="lead" style="margin:0 0 8px">'보험'은 단순한 계약이 아니라, 서로의 삶을 지켜주는 약속이라고 믿습니다. 누군가의 위기 순간에 "괜찮아요, 준비되어 있잖아요."라고 말해줄 수 있는 사람이 되고 싶었습니다.</p>
+        <p class="lead">고객님께 드리는 약속은 단순합니다 — <b style="color:var(--purple-600)">기준 있는 설계, 사람 중심의 상담.</b> 그 믿음에 끝까지 책임으로 보답하겠습니다.</p>
+      </div>
+    </div>
+
+    <!-- promises -->
+    <div class="promises">
+      <div class="promise reveal">
+        <div class="num">PROMISE 01</div>
+        <h4>알맞은 보험을 약속합니다</h4>
+        <p>개인마다 상황과 환경에 따라 다른 보험이 설계되어야 합니다. 가장 알맞은 상품을 전달해 드릴 것을 약속합니다.</p>
+      </div>
+      <div class="promise reveal">
+        <div class="num">PROMISE 02</div>
+        <h4>한 번으로 끝나지 않을 것을 약속합니다</h4>
+        <p>보험은 가입 후에도 보장을 위한 점검이 필요합니다. 지속적인 정보를 전달드릴 것을 약속합니다.</p>
+      </div>
+      <div class="promise reveal">
+        <div class="num">PROMISE 03</div>
+        <h4>단순 보험이 아님을 약속합니다</h4>
+        <p>단순 보장만을 위한 상담의 효과는 일시적입니다. 미래 계획을 든든히 세우실 수 있도록 함께합니다.</p>
+      </div>
+    </div>
+
+    <!-- profile -->
+    <div class="profile">
+      <div>
+        <div class="profile-name reveal"><h3>최윤경</h3><span class="role">대표 · 지점장</span></div>
+        <p class="eng reveal">Choi Youn Kyung</p>
+        <div class="profile-badge reveal">
+          <div class="big">20<span>년</span></div>
+          <div class="label">금융·보험 컨설팅 경력</div>
+          <hr>
+          <div class="lic">
+            <b>License</b><br>
+            2005 새마을금고 제1회 공제모집 합격증<br>
+            2008 보험설계사 등록증 · 보험모집 종사자 등록증<br>
+            2023 변액보험판매관리사 자격증
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <ul class="career">
+          <li><span class="yr">1995–2007</span><span>새마을금고 13년 근무 · 공제 판매사 1회 합격 후 지점 실적 3년 연속 1위</span></li>
+          <li><span class="yr">2008</span><span>삼성화재 전략영업부 FRC 입사 후 신인상 · 3W 연속 50주 달성</span></li>
+          <li><span class="yr">2016–2017</span><span>KGA에셋 입사 · 연도대상 개인 실적 부문 수상</span></li>
+          <li><span class="yr">2018–2020</span><span>베트남 현지법인 DB손해보험 제휴 · PTI INSURANCE 호치민 기업보험 담당</span></li>
+          <li><span class="yr">2020–2023</span><span>연도대상 개인실적 부문 수상</span></li>
+          <li><span class="yr">현재</span><span class="now">MEGA종합금융 지점장 · 우리동네 보험지킴이 대표</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== INSURERS ===================== -->
+<section class="insurers" id="insurers">
+  <div class="wrap">
+    <p class="eyebrow reveal">Partners</p>
+    <h2 class="h2 reveal">국내 <b>모든 보험사</b>를 비교합니다</h2>
+    <p class="lead reveal">우리는 서로 다른데, 왜 같은 보험을 가입하고 계신가요? 우리동네 보험지킴이는 손해·생명 전 보험사를 통해 나에게 가장 알맞은 상품을 찾아 적합한 설계를 전달드립니다.</p>
+
+    <div class="ins-block reveal">
+      <h4>손해보험사</h4>
+      <div class="chips">
+        <span class="chip">삼성화재</span><span class="chip">메리츠화재</span><span class="chip">현대해상</span>
+        <span class="chip">DB손해보험</span><span class="chip">KB손해보험</span><span class="chip">롯데손해보험</span>
+        <span class="chip">흥국화재</span><span class="chip">NH농협손해보험</span><span class="chip">한화손해보험</span>
+        <span class="chip">MG손해보험</span><span class="chip">AIG손해보험</span><span class="chip">하나손해보험</span>
+        <span class="chip">라이나손보</span><span class="chip">AXA손해보험</span><span class="chip">신한EZ손보</span>
+        <span class="chip">수협공제</span><span class="chip">우체국보험</span>
+      </div>
+    </div>
+    <div class="ins-block reveal">
+      <h4>생명보험사</h4>
+      <div class="chips">
+        <span class="chip">삼성생명</span><span class="chip">한화생명</span><span class="chip">교보생명</span>
+        <span class="chip">신한라이프</span><span class="chip">미래에셋생명</span><span class="chip">DB생명</span>
+        <span class="chip">흥국생명</span><span class="chip">NH농협생명</span><span class="chip">하나생명</span>
+        <span class="chip">KB라이프</span><span class="chip">KDB생명</span><span class="chip">동양생명</span>
+        <span class="chip">ABL생명</span><span class="chip">푸본현대생명</span><span class="chip">AIA생명</span>
+        <span class="chip">메트라이프</span><span class="chip">라이나생명</span><span class="chip">처브라이프</span>
+        <span class="chip">BNP파리바카디프</span><span class="chip">IM라이프</span><span class="chip">IBK연금보험</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONSULTING ===================== -->
+<section class="consult" id="consult">
+  <div class="wrap">
+    <p class="eyebrow reveal">Consulting</p>
+    <h2 class="h2 reveal">우리동네의 <b>차별화된 보험 컨설팅</b></h2>
+    <p class="lead reveal">급변하는 가족 형태와 다양한 개인의 상황 변화를 고려하여, 꼭 맞는 맞춤형 컨설팅을 약속합니다.</p>
+
+    <div class="diff">
+      <div class="d reveal">
+        <h4>계약자의 개인적 상황을 고려합니다</h4>
+        <p>납입 여력, 건강 상태, 가족력, 직업, 상황 성향까지.</p>
+        <span class="small">한 사람 한 사람 다른 인생을 반영합니다.</span>
+      </div>
+      <div class="d reveal">
+        <h4>연령대별 가족 형태를 반영합니다</h4>
+        <p>1인 가족, 부부 가족, 3인 이상 가족.</p>
+        <span class="small">매달 변경되는 상품 중 딱 맞는 상품으로 혼합 설계합니다.</span>
+      </div>
+    </div>
+
+    <div class="plans">
+      <div class="plan reveal"><div class="ic">🧒</div><div class="age">0–20세</div><h4>어린이플랜</h4><p>자랄수록 달라지는 자녀의 상황, 가족의 상황에 맞추어 설계</p></div>
+      <div class="plan reveal"><div class="ic">🎓</div><div class="age">20–30세</div><h4>청년플랜</h4><p>경제 여건·직업별 상황(위험대비)을 현재에 맞추어 설계</p></div>
+      <div class="plan reveal"><div class="ic">💼</div><div class="age">30–40세</div><h4>3040플랜</h4><p>경제·건강·직업·상황 성향을 반영하여 설계</p></div>
+      <div class="plan reveal"><div class="ic">🌳</div><div class="age">40–50세</div><h4>중년플랜</h4><p>가족력·건강·직업 등을 반영, 보험금 수령 시기 준비</p></div>
+      <div class="plan reveal"><div class="ic">🌅</div><div class="age">60–80세</div><h4>시니어플랜</h4><p>납입 여력·세금 부담 감소·상속을 고려한 설계</p></div>
+    </div>
+    <p class="plan-note reveal">매달 변경되는 보험 상품 중 <b>고객님께 딱 맞는 상품</b>으로 설계해 드립니다.</p>
+  </div>
+</section>
+
+<!-- ===================== RECRUIT ===================== -->
+<section class="recruit" id="recruit">
+  <div class="wrap">
+    <p class="eyebrow reveal">Recruit</p>
+    <h2 class="h2 reveal">설계사를 <b>존중하는</b> 보험,<br>우리동네가 지향하는 방향입니다</h2>
+    <p class="lead reveal">신뢰는 말이 아니라 구조에서 만들어집니다. 실적과 압박이 아닌 자율과 책임의 균형 속에서, 설계사가 자기 기준으로 안정적으로 일할 수 있는 환경을 만듭니다.</p>
+
+    <div class="philo">
+      <div class="p reveal"><div class="n">01</div><h4>고객과 설계사 모두 존중</h4><p>설계사가 스스로를 전문적으로 관리하고 체계적으로 고객을 대할 때, 고객도 그만큼의 신뢰와 존중으로 이어집니다.</p></div>
+      <div class="p reveal"><div class="n">02</div><h4>설계사 개인의 선택 존중</h4><p>출근 방식, 시스템 활용 여부는 각자의 선택을 존중합니다. 필요한 사람에겐 도구와 교육을, 기존 방식이 편한 분께는 그대로.</p></div>
+      <div class="p reveal"><div class="n">03</div><h4>지속 가능한 전문성</h4><p>단기 성과가 아닌, 오래 살아남는 설계사를 지향합니다. 자기 기준과 리듬으로 오래 일하는 설계사가 진정한 전문가입니다.</p></div>
+    </div>
+
+    <div class="types">
+      <div class="type reveal">
+        <div class="tname">케어형 설계사 <span>Care Type</span></div>
+        <ul>
+          <li>지점장의 코칭·교육·실행 기준을 함께 따름</li>
+          <li>WD 시스템·교육·콘텐츠 전면 지원 / 자동화 연결</li>
+          <li>"함께 성장하고 코칭받는 실행형 설계사"</li>
+        </ul>
+      </div>
+      <div class="type reveal">
+        <div class="tname">자율형 설계사 <span>Independent Type</span></div>
+        <ul>
+          <li>WD 시책·콘텐츠만 참고하고 실행은 개별적으로</li>
+          <li>완전 자율형 · 일부 시스템 접근 / 공간 이용</li>
+          <li>"본인의 리듬으로 일하는 독립형 설계사"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="recruit-cta reveal">
+      <div class="t">
+        <strong>실적 압박이 아닌, 기준과 책임으로.</strong>
+        <span>변화에 열려 있고 스스로 일의 기준을 세우고 싶은 분과 함께합니다. 서두르지 않으셔도 됩니다.</span>
+      </div>
+      <a href="#contact" class="btn btn-ghost">설계사 지원 문의 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="eyebrow reveal">Contact</p>
+    <h2 class="h2 reveal">간편하게 <b>상담을 신청</b>하세요</h2>
+    <p class="lead reveal">성함과 연락처만 남겨주시면, 우리동네 보험지킴이가 빠르게 연락드리겠습니다.</p>
+
+    <div class="contact-grid" style="margin-top:48px">
+      <div class="contact-info reveal">
+        <h3>우리동네 보험지킴이<br>광진점</h3>
+        <div class="info-row"><div class="k">전화</div><div class="v">010-6396-9896<br><small>대표전화 02-2039-8944</small></div></div>
+        <div class="info-row"><div class="k">주소</div><div class="v">서울 광진구 광나루로37길 21, 2층 201호</div></div>
+        <div class="info-row"><div class="k">영업시간</div><div class="v">평일 10:00 – 18:00 <small>(점심 12:30–13:30)</small><br><small>주말·공휴일 휴무</small></div></div>
+        <div class="info-row"><div class="k">오시는길</div><div class="v"><small>7호선 어린이대공원역 3번 출구 도보 4분<br>2호선 구의역 1번 출구 도보 3분</small></div></div>
+      </div>
+
+      <div class="form-card reveal">
+        <h3>무료 상담신청</h3>
+        <p class="desc">아래 정보를 남겨주시면 영업시간 내 순차 연락드립니다.</p>
+        <form id="consultForm" novalidate>
+          <div class="field">
+            <label for="cname">성함 <span class="req">*</span></label>
+            <input type="text" id="cname" name="name" placeholder="이름을 입력해 주세요" required />
+          </div>
+          <div class="field">
+            <label for="cphone">연락처 <span class="req">*</span></label>
+            <input type="tel" id="cphone" name="phone" placeholder="010-0000-0000" required />
+          </div>
+          <div class="field">
+            <label for="cmsg">상담 받고 싶은 내용 <small style="color:var(--grey-400);font-weight:500">(선택)</small></label>
+            <textarea id="cmsg" name="message" placeholder="궁금하신 점이나 상담 받고 싶은 내용을 자유롭게 적어주세요."></textarea>
+          </div>
+          <label class="agree">
+            <input type="checkbox" id="cagree" name="agree" required />
+            <span>개인정보 수집·이용에 동의합니다. (상담 목적, 보유기간 1년) <span class="req" style="color:var(--purple-500)">*</span></span>
+          </label>
+          <button type="submit" class="btn btn-primary" id="submitBtn">상담신청 보내기</button>
+          <div class="form-msg" id="formMsg"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="assets/logo.png" alt="우리동네 보험지킴이" />
+        <p>기준 있는 설계, 사람 중심의 상담. 삶에 맞춘 보험, 필요할 때 곁에 — 우리동네 보험지킴이.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <p>전화 010-6396-9896</p>
+        <p>대표전화 02-2039-8944</p>
+        <p>팩스 070-8672-5996</p>
+        <p>서울 광진구 광나루로37길 21, 2층 201호</p>
+      </div>
+      <div class="foot-col">
+        <h5>Channel</h5>
+        <a href="#" id="lnkKakao">카카오톡 채널</a>
+        <a href="#" id="lnkYoutube">YouTube @wooridongnae8944</a>
+        <a href="#" id="lnkInsta">Instagram</a>
+        <a href="#" id="lnkBlog">Blog</a>
+        <div class="foot-sns">
+          <a href="#" title="카카오톡">TALK</a>
+          <a href="#" title="유튜브">YT</a>
+          <a href="#" title="인스타">IG</a>
+          <a href="#" title="블로그">BLOG</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 우리동네 보험지킴이 (WOORI DONGNAE). All rights reserved.</span>
+      <span>대표 최윤경 · MEGA종합금융</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Kakao -->
+<a href="#" class="float-kakao" id="floatKakao">💬 카톡 문의</a>
+
+<script>
+/* ============================================================
+   CONFIG  —  사라님이 채워주실 키 (★ 3곳)
+   ① Supabase: 새 보험 고객용 프로젝트 만들면 URL + anon key
+   ② Web3Forms: web3forms.com 무료 가입 → access key (메일 수신)
+   ============================================================ */
+const CONFIG = {
+  SUPABASE_URL:  "여기에_새_SUPABASE_URL",        // 예: https://abcd.supabase.co
+  SUPABASE_ANON: "여기에_SUPABASE_ANON_KEY",      // 공개용 anon key (RLS로 보호됨)
+  WEB3FORMS_KEY: "여기에_WEB3FORMS_ACCESS_KEY",   // 상담신청 메일 받을 키
+  KAKAO_CHANNEL: "https://pf.kakao.com/_여기에채널주소",
+  YOUTUBE_URL:   "https://youtube.com/@wooridongnae8944"
+};
+
+/* ---------- nav scroll state ---------- */
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 12));
+
+/* ---------- mobile menu ---------- */
+const hamb = document.getElementById('hamb');
+const navLinks = document.getElementById('navLinks');
+hamb.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+/* ---------- reveal on scroll ---------- */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold:.14 });
+document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(i%4*60)+'ms'; io.observe(el); });
+
+/* ---------- channel links ---------- */
+document.getElementById('floatKakao').href = CONFIG.KAKAO_CHANNEL;
+document.getElementById('lnkKakao').href = CONFIG.KAKAO_CHANNEL;
+document.getElementById('lnkYoutube').href = CONFIG.YOUTUBE_URL;
+
+/* ---------- 상담신청 폼: Supabase 저장 + 메일 발송 ---------- */
+const form = document.getElementById('consultForm');
+const msg  = document.getElementById('formMsg');
+const submitBtn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', async (ev) => {
+  ev.preventDefault();
+  msg.className = 'form-msg';
+  const name  = form.name.value.trim();
+  const phone = form.phone.value.trim();
+  const message = form.message.value.trim();
+  const agree = form.agree.checked;
+
+  if(!name || !phone){ showMsg('성함과 연락처를 입력해 주세요.', false); return; }
+  if(!agree){ showMsg('개인정보 수집·이용에 동의해 주세요.', false); return; }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = '전송 중…';
+
+  let okSupabase = false, okMail = false;
+
+  // ① Supabase 저장 (REST insert) — 키 설정 시 동작
+  if(CONFIG.SUPABASE_URL.startsWith('http')){
+    try{
+      const r = await fetch(`${CONFIG.SUPABASE_URL}/rest/v1/consultations`, {
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json',
+          'apikey':CONFIG.SUPABASE_ANON,
+          'Authorization':`Bearer ${CONFIG.SUPABASE_ANON}`,
+          'Prefer':'return=minimal'
+        },
+        body: JSON.stringify({ name, phone, message, agreed:true })
+      });
+      okSupabase = r.ok;
+    }catch(e){ console.error('supabase', e); }
+  }
+
+  // ② 메일 발송 (Web3Forms) — 키 설정 시 동작
+  if(CONFIG.WEB3FORMS_KEY && !CONFIG.WEB3FORMS_KEY.startsWith('여기에')){
+    try{
+      const r = await fetch('https://api.web3forms.com/submit', {
+        method:'POST',
+        headers:{'Content-Type':'application/json', 'Accept':'application/json'},
+        body: JSON.stringify({
+          access_key: CONFIG.WEB3FORMS_KEY,
+          subject: `[우리동네 상담신청] ${name}님`,
+          name, phone, message: message || '(내용 없음)'
+        })
+      });
+      okMail = r.ok;
+    }catch(e){ console.error('web3forms', e); }
+  }
+
+  submitBtn.disabled = false;
+  submitBtn.textContent = '상담신청 보내기';
+
+  if(okSupabase || okMail){
+    form.reset();
+    showMsg('신청이 접수되었습니다. 영업시간 내 빠르게 연락드리겠습니다. 감사합니다.', true);
+  }else{
+    showMsg('전송에 문제가 있었습니다. 잠시 후 다시 시도하시거나 010-6396-9896으로 연락 주세요.', false);
+  }
+});
+
+function showMsg(text, ok){
+  msg.textContent = text;
+  msg.className = 'form-msg ' + (ok ? 'ok' : 'err');
+}
+</script>
+</body>
+</html>
