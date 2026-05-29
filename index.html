@@ -628,11 +628,13 @@ footer{background:#160d2c;color:#cdc2e6;padding:64px 0 40px}
    ② Web3Forms: web3forms.com 무료 가입 → access key (메일 수신)
    ============================================================ */
 const CONFIG = {
-  SUPABASE_URL:  "여기에_새_SUPABASE_URL",        // 예: https://abcd.supabase.co
-  SUPABASE_ANON: "여기에_SUPABASE_ANON_KEY",      // 공개용 anon key (RLS로 보호됨)
-  WEB3FORMS_KEY: "여기에_WEB3FORMS_ACCESS_KEY",   // 상담신청 메일 받을 키
-  KAKAO_CHANNEL: "https://pf.kakao.com/_여기에채널주소",
-  YOUTUBE_URL:   "https://youtube.com/@wooridongnae8944"
+  // 실제 값 반영 완료. 안전장치: 값이 비면 자동으로 호출 skip (로직 유지)
+  SUPABASE_URL:  "https://hxsqudyrgjhlicahtkdd.supabase.co",            // Supabase Project URL
+  SUPABASE_ANON: "sb_publishable_X9cJXXMVMCxWT3EJqDzkQA_1pDCfS3F",      // Publishable key ※ service_role·secret·connection string·DB password 금지
+  WEB3FORMS_KEY: "9f553e34-5433-484f-bf0a-06acb3739844",               // Web3Forms Form Access Key (상담 메일 알림)
+
+  KAKAO_CHANNEL: "https://pf.kakao.com/_QHWlG",
+  YOUTUBE_URL:   "https://www.youtube.com/@%EC%9A%B0%EB%A6%AC%EB%8F%99%EB%84%A4%EB%B3%B4%ED%97%98%EC%A7%80%ED%82%B4%EC%9D%B4"
 };
 
 /* ---------- nav scroll state ---------- */
